@@ -1,4 +1,4 @@
-let albums = [
+let albumsArr = [
   ["Operation Ivy", "Energy"],
   ["Blink 182", "Dude Ranch"],
   ["New Found Glory", "Sticks and Stones"],
@@ -38,36 +38,44 @@ class Album {
   };
 }
 
-let opt1 = document.getElementById("option1");
+// VARIABLES
+let opt1 = document.getElementById("option1").innerText = `${albumsArr[0][0]}, ${albumsArr[0][1]}`;
 console.log("opt1: ", opt1.innerText);
-let opt2 = document.getElementById("option2");
-let opt3 = document.getElementById("option3");
+let opt2 = document.getElementById("option2").innerText = `${albumsArr[1][0]}, ${albumsArr[1][1]}`;
+let opt3 = document.getElementById("option3").innerText = `${albumsArr[2][0]}, ${albumsArr[2][1]}`;
 let optPlay = document.getElementById("play");
 let btnFavAlbum = document.getElementById("btnFavAlbum");
 let favoriteAlbum = document.getElementById("favoriteAlbum");
 
 var jbox = new Jukebox();
-const album1 = new Album("Operation Ivy", "Energy");
-const album2 = new Album("Blink 182", "Dude Ranch");
-const album3 = new Album("New Found Glory", "Sticks and Stones");
+
+// for(let i=0; i<albumsArr.length; i++){
+//  let str ="album"+ i+" = new Album(albumsArr[i])";
+//     eval(str);
+//     console.log('str:', str)
+// }
+
+const album1 = new Album(albumsArr[0][0], albumsArr[0][1]);
+const album2 = new Album(albumsArr[1][0], albumsArr[1][1]);
+const album3 = new Album(albumsArr[2][0], albumsArr[2][1]);
 
 jbox.addAlbum(album1);
 jbox.addAlbum(album2);
 jbox.addAlbum(album3);
 
 optPlay.addEventListener("click", function () {
-  console.log("Album 1 was played");
   let chosenOption = document.querySelector(
     ".btn#dropdownMenuButton:first-child"
   );
   console.log("chosenJ: ", chosenOption.innerHTML);
-  if (chosenOption.innerHTML === "'Operation Ivy', Energy") {
+  if (chosenOption.innerHTML === "Operation Ivy, Energy") {
+    console.log("Album 1 was played");
     album1.play();
-  } else if (chosenOption.innerHTML === "'Blink 182', Dude Ranch") {
+  } else if (chosenOption.innerHTML === "Blink 182, Dude Ranch") {
+    console.log("Album 2 was played");
     album2.play();
-  } else if (
-    chosenOption.innerHTML === "'New Found Glory', Sticks and Stones"
-  ) {
+  } else if (chosenOption.innerHTML === "New Found Glory, Sticks and Stones") {
+    console.log("Album 3 was played");
     album3.play();
   }
 });
